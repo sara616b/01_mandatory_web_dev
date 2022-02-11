@@ -1,3 +1,40 @@
 % include('header', title='Signup', loggedIn=False)
-    Sign Up
+    <h1>
+        Create a new user here!
+    </h1>
+    <form action="/signup" method="post">
+        <label>
+            First Name
+            % if first_name_missing == "error":
+                <span>Please, input your first name</span>
+            % end 
+            % if first_name_length == "error":
+                <span>Your first name must be between 2 and 50 characters long</span>
+            % end 
+            <input name="new_user_first_name" type="text"/>
+        </label>
+        <label>
+            Last Name
+            % if last_name_missing == "error":
+                <span>Please, input your last name</span>
+            % end 
+            <input name="new_user_last_name" type="text">
+        </label>
+        <label>
+            Email
+            % if email_invalid == "error":
+                <span>Please, input a valid email</span>
+            % end 
+            <input name="new_user_email" type="text">
+        </label>
+        <label>
+            Username
+            <input name="new_user_username" type="text">
+        </label>
+        <label>
+            Password
+            <input name="new_user_password" type="password">
+        </label>
+        <button>SIGN ME UP!</button>
+    </form>
 % include('footer')

@@ -12,6 +12,8 @@ def style():
 import home_get
 import users_get
 import signup_get
+import signup_post
+import signup_success_get
 import login_get
 
 run(host="127.0.0.1", port="4444", reloader=True, debug=True, server="paste")
