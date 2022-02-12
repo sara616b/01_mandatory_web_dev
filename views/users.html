@@ -1,3 +1,19 @@
 % include('header', title='Users', loggedIn=False)
-    Users
+    <main id="users-view">
+        <h1>Users</h1>
+        % if users == []:
+            <div>
+                Sorry, no users to show!
+            </div>
+        % end
+        <div id="users">
+            % for user in users:
+                <div class="user">
+                    <input name="user_id" type="hidden" value='{{ user["id"] }}'>
+                    <p>{{ f'{user["first_name"]} {user["last_name"]}' }}</p>
+                    <p>Email: {{ user["email"] }}</p>
+                </div>
+            % end
+        </div>
+    </main>
 % include('footer')

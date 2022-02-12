@@ -8,10 +8,22 @@ from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
 @view("signup.html")
 def signup_view():
     errors = {}
-    errors["first_name_missing"] = request.params.get("first-name-missing")
+    errors["first_name_missing"] = request.params.get("first-name-missing") if request.params.get("first-name-missing") else 'no-error'
     errors["first_name_length"] = request.params.get("first-name-length")
     errors["last_name_missing"] = request.params.get("last-name-missing")
+    errors["email_missing"] = request.params.get("email-missing")
     errors["email_invalid"] = request.params.get("email-invalid")
+    errors["username_missing"] = request.params.get("username-missing")
+    errors["password_missing"] = request.params.get("password-missing")
 
+    form_values = {}
+    form_values["user_first_name"] = request.params.get("first-name") 
+    form_values["user_last_name"] = request.params.get("last-name")
+    form_values["user_email"] = request.params.get("email")
+    form_values["user_username"] = request.params.get("username")
+
+    print("#"*50)
+    values = form_values | errors
+    print(values)
     # TODO - validate email and password
-    return errors
+    return values

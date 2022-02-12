@@ -3,6 +3,23 @@
     padding: 0;
     width: 100%;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+main {
+    padding: 1rem;
+}
+h1 {
+    padding-bottom: 10px;
+    font-weight: 300;
+}
+p, label {
+    font-weight: 300;
+    line-height: 1.5;
 }
 
 /* NAVIGATION */
@@ -21,7 +38,6 @@ nav a {
     padding: 0.5rem 1rem;
     color: white;
     width: auto;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
     transition: 0.2s all;
     font-weight: 300;
@@ -36,7 +52,49 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* MAIN */
-main {
-    padding: 1rem;
+
+/* SIGN UP */
+#signup {
+    max-width: 500px;
+    margin: auto;
+}
+#signup form {
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    padding: 15px;
+}
+#signup form label {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 10px 0;
+}
+#signup form label span { /* errors */
+    color: rgb(131, 32, 32);
+    font-size: 12px;
+}
+#signup form input {
+    border: 1px solid #d5d5d5;
+    border-radius: 2px;
+    background-color: #f9f9f9;
+    padding: 5px;
+}
+#signup form button {
+    background-color: rgb(68, 62, 148);
+    color: white;
+    padding: 10px;
+    border: none;
+    transition: all 0.2s;
+    border-radius: 2px;
+}
+#signup form button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+/* USERS */
+#users-view #users .user {
+    border: 1px solid #bebebe;
+    border-radius: 2px;
+    padding: 15px;
+    margin-bottom: 10px;
 }

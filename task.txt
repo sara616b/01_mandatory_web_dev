@@ -19,7 +19,7 @@ Use pyjwt to install and use JSON WEB TOKENS
 Use a JSON Web TOKEN (JWT) in the cookie
 
 TODO
-- sign up (missing validation, styling)
+- sign up (missing validation, styling, remembering values)
 - display users
 - login with right new abilities
 - display tweets
