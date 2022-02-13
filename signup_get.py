@@ -2,6 +2,7 @@ from bottle import get, request, view
 
 # GLOBAL VALUES #############################
 from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
+from check_if_logged_in import check_if_logged_in
 
 ##############################
 @get("/signup")
@@ -22,8 +23,6 @@ def signup_view():
     form_values["user_email"] = request.params.get("email")
     form_values["user_username"] = request.params.get("username")
 
-    print("#"*50)
-    values = form_values | errors
-    print(values)
+    values = form_values | errors | dict(is_logged_in=check_if_logged_in())
     # TODO - validate email and password
     return values

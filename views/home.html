@@ -1,0 +1,9 @@
+% include('header', title='Home', loggedIn=is_logged_in)
+    <main>
+        <h1>Home</h1>
+        <p>Good day, {{user_first_name}}!</p>
+        % if is_logged_in:
+            <p>You have successfully logged in.</p>
+        % end
+    </main>
+% include('footer')

@@ -1,10 +1,11 @@
 from bottle import get, view
 
 # GLOBAL VALUES #############################
+from global_values import *
 from check_if_logged_in import check_if_logged_in
 
 ##############################
-@get("/signup-success")
-@view("signup_success.html")
-def signup_success_view():
+@get("/")
+@view("index.html")
+def index_view():
     return dict(is_logged_in=check_if_logged_in())

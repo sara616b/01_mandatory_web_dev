@@ -52,33 +52,32 @@ nav a:hover {
     cursor: pointer;
 }
 
-
-/* SIGN UP */
-#signup {
+/* SIGN UP and LOGIN */
+#signup, #login {
     max-width: 500px;
     margin: auto;
 }
-#signup form {
+form {
     border: 1px solid #bebebe;
     border-radius: 2px;
     padding: 15px;
 }
-#signup form label {
+form label {
     display: flex;
     flex-direction: column;
     padding: 0 0 10px 0;
 }
-#signup form label span { /* errors */
+form label span, form span { /* errors */
     color: rgb(131, 32, 32);
     font-size: 12px;
 }
-#signup form input {
+form input {
     border: 1px solid #d5d5d5;
     border-radius: 2px;
     background-color: #f9f9f9;
     padding: 5px;
 }
-#signup form button {
+form button {
     background-color: rgb(68, 62, 148);
     color: white;
     padding: 10px;
@@ -86,7 +85,7 @@ nav a:hover {
     transition: all 0.2s;
     border-radius: 2px;
 }
-#signup form button:hover {
+form button:hover {
     cursor: pointer;
     opacity: 0.8;
 }

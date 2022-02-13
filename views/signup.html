@@ -1,4 +1,4 @@
-% include('header', title='Signup', loggedIn=False)
+% include('header', title='Signup', loggedIn=is_logged_in)
 <main id="signup">
     <h1>
         Create a new user here!
@@ -12,14 +12,14 @@
             % if first_name_length == "error":
                 <span>Your first name must be between 2 and 50 characters long</span>
             % end 
-            <input name="new_user_first_name" type="text" value="{{ user_first_name or '' }}"/>
+            <input name="new_user_first_name" type="text" placeholder="First name" value="{{ user_first_name or '' }}"/>
         </label>
         <label>
             Last Name
             % if last_name_missing == "error":
                 <span>Please, input your last name</span>
             % end
-            <input name="new_user_last_name" type="text" value="{{ user_last_name or '' }}">
+            <input name="new_user_last_name" type="text" placeholder="Last name" value="{{ user_last_name or '' }}">
         </label>
         <label>
             Email
@@ -29,21 +29,21 @@
             % if email_invalid == "error":
                 <span>Please, input a valid email</span>
             % end
-            <input name="new_user_email" type="text" value="{{ user_email or '' }}">
+            <input name="new_user_email" type="text" placeholder="Email" value="{{ user_email or '' }}">
         </label>
         <label>
             Username
             % if username_missing == "error":
                 <span>Please, input a username</span>
             % end
-            <input name="new_user_username" type="text" value="{{ user_username or '' }}">
+            <input name="new_user_username" type="text" placeholder="Username" value="{{ user_username or '' }}">
         </label>
         <label>
             Password
             % if password_missing == "error":
                 <span>Please, input a password</span>
             % end
-            <input name="new_user_password" type="password">
+            <input name="new_user_password" type="password" placeholder="Password">
         </label>
         <button>SIGN ME UP!</button>
     </form>

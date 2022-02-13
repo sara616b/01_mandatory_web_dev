@@ -1,32 +1,26 @@
-% include('header', title='Login', loggedIn=False)
-    <main>
+% include('header', title='Login', loggedIn=is_logged_in)
+    <main id="login">
         <h1>
             Login
         </h1>
         <form action="/login" method="post">
             % if error == "no_user":
-                <h2>
-                    User doesn't exist
-                </h2>
+                <span>User doesn't exist</span>
             % end
-            <div>
+            <label>
+                Email
                 % if error == "user_email":
-                    <h2>
-                        Please enter a valid email
-                    </h2>
+                    <span>Please enter a valid email</span>
                 % end
-                <label>Email</label>
-                <input name="user_email" type="text" placeholder="email" value="{{user_email or ''}}">
-            </div>
-            <div>
+                <input name="user_email" type="text" placeholder="Email" value="{{user_email or ''}}">
+            </label>
+            <label>
+                Password
                 % if error == "user_password":
-                    <h2>
-                        Please enter the correct password
-                    </h2>
+                    <span>Please enter the correct password</span>
                 % end
-                <label>Password (min 6 max 50 characters)</label>
-                <input name="user_password" type="password" placeholder="password">
-            </div>
+                <input name="user_password" type="password" placeholder="Password">
+            </label>
             <button>LOGIN</button>
         </form>
     </main>

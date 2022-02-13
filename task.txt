@@ -21,7 +21,7 @@ Use a JSON Web TOKEN (JWT) in the cookie
 TODO
 - sign up (missing validation, styling, remembering values)
 - display users
-- login with right new abilities
+- login with right new abilities (correct errors)
 - display tweets
 - create tweets
 - delete tweets
