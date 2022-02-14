@@ -18,5 +18,8 @@ import signup_success_get
 import login_get
 import login_post
 import logout_get
+import new_tweet_get
+import new_tweet_post
+import feed_get
 
 run(host="127.0.0.1", port="4444", reloader=True, debug=True, server="paste")

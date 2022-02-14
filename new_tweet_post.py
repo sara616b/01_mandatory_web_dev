@@ -1,0 +1,51 @@
+from bottle import redirect, request, post
+import re
+import uuid
+import jwt
+import time
+
+# GLOBAL VALUES #############################
+from global_values import *
+
+##############################
+@post("/new-tweet")
+def new_tweet_post():
+    
+    form_inputs = {}
+    
+    new_tweet_title = request.forms.get("new_tweet_title")
+    if not new_tweet_title:
+        print("No title")
+    else:
+        form_inputs["title"] = new_tweet_title
+        
+    
+    new_tweet_description = request.forms.get("new_tweet_description")
+    if not new_tweet_description:
+        print("No description")
+    else:
+        form_inputs["description"] = new_tweet_description
+    
+    # get user info
+    user_session_jwt = request.get_cookie("jwt", secret="secret")
+    if user_session_jwt not in SESSIONS:
+        return redirect("/login")
+    user_information = jwt.decode(user_session_jwt, JWT_KEY, algorithms=["HS256"])
+    user_username = user_information["username"]
+    user_first_name = user_information["first_name"]
+    user_id = user_information["id"]
+    
+    # append user to USERS
+    new_tweet = {
+        "id": str(uuid.uuid4()),
+        "user_id": user_id,
+        "first_name": user_first_name,
+        "username": user_username,
+        "title": new_tweet_title,
+        "description": new_tweet_description,
+        "time_posted": time.localtime(),
+    }
+    TWEETS.append(new_tweet)
+    print(new_tweet)
+
+    return redirect("/feed")

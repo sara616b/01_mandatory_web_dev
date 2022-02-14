@@ -28,5 +28,5 @@ def login_post():
             SESSIONS.append(user_session_jwt)
             # loop through real user database to find information
             response.set_cookie("jwt", user_session_jwt, secret="secret")
-            return redirect("/home")
+            return redirect("/feed")
     return redirect("/login?error=no_user")

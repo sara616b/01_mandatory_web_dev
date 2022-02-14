@@ -1,0 +1,27 @@
+% include('header', title='Feed', loggedIn=is_logged_in)
+    <main id="feed-view">
+        % if tweets == []:
+            <div>
+                Sorry, no tweets to show yet!
+            </div>
+            <a href="/new-tweet">Why not post a new one!</a>
+        % end
+        <div id="tweets">
+            % for tweet in tweets:
+                <div class="tweet">
+                    <input name="tweet_id" type="hidden" value='{{ tweet["id"] }}'>
+                    <p class="name">{{tweet["first_name"]}} <span class="username">@{{tweet["username"]}}</span></p>
+                    <h2 class="title">{{ tweet["title"] }}</h2>
+                    <p class="description">{{ tweet["description"] }}</p>
+                    <p class="time-posted">{{ f'{tweet["time_posted"].tm_mon}/{tweet["time_posted"].tm_mday}/{tweet["time_posted"].tm_year}' }}</p>
+                    % if user_id == tweet["user_id"]:
+                        <button>EDIT</button>
+                    % end
+                    % if user_id == tweet["user_id"]:
+                        <button>DELETE</button>
+                    % end
+                </div>
+            % end
+        </div>
+    </main>
+% include('footer')

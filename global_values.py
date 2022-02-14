@@ -1,7 +1,16 @@
 import uuid
+import time
 
 SESSIONS = []
-TWEETS = []
+TWEETS = [{
+        "id": str(uuid.uuid4()),
+        "user_id": str(uuid.uuid4()),
+        "first_name": "Name Here",
+        "username": "test",
+        "title": "Pretty title",
+        "description": "Funny tweet, haha!",
+        "time_posted": time.localtime(),
+    }]
 USERS = [{
         "first_name": "Sarah",
         "last_name": "Frederiksen",

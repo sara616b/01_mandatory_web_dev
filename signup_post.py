@@ -30,11 +30,12 @@ def signup():
 
     # email
     new_user_email = request.forms.get("new_user_email")
-    form_inputs["email"] = new_user_email
     if not new_user_email:
         errors.append("email-missing")
     elif not re.match(REGEX_EMAIL, new_user_email):
         errors.append("email-invalid")
+    if not new_user_email == '':
+        form_inputs["email"] = new_user_email
 
     # username
     new_user_username = request.forms.get("new_user_username")

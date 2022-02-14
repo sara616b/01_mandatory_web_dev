@@ -1,0 +1,18 @@
+% include('header', title='New Tweet', loggedIn=is_logged_in)
+    <main id="new-tweet-view">
+        <h1>
+            Post a new tweet!
+        </h1>
+        <form action="/new-tweet" method="post">
+            <label>
+                Title
+                <input name="new_tweet_title" type="text" placeholder="Title"/>
+            </label>
+            <label>
+                Description
+                <input name="new_tweet_description" type="text" placeholder="Description">
+            </label>
+            <button>POST!</button>
+        </form>
+    </main>
+% include('footer')
