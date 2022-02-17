@@ -10,6 +10,7 @@ TWEETS = [{
         "title": "Pretty title",
         "description": "Funny tweet, haha!",
         "time_posted": time.localtime(),
+        "time_edited": None,
     }]
 USERS = [{
         "first_name": "Sarah",

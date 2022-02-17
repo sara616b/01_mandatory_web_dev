@@ -26,6 +26,18 @@ p, label {
     font-weight: 300;
     line-height: 1.5;
 }
+button {
+    background-color: rgb(68, 62, 148);
+    color: white;
+    padding: 10px;
+    border: none;
+    transition: all 0.2s;
+    border-radius: 2px;
+}
+button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
 
 /* NAVIGATION */
 nav {
@@ -80,23 +92,13 @@ form label span, form span { /* errors */
     padding: 0 2px;
     font-size: 12px;
 }
-form input {
+form input, form textarea {
     border: 1px solid #d5d5d5;
     border-radius: 2px;
     background-color: #f9f9f9;
     padding: 5px;
-}
-form button {
-    background-color: rgb(68, 62, 148);
-    color: white;
-    padding: 10px;
-    border: none;
-    transition: all 0.2s;
-    border-radius: 2px;
-}
-form button:hover {
-    cursor: pointer;
-    opacity: 0.8;
+    max-width: 100%;
+    font-size: 14px;
 }
 
 /* USERS */
@@ -122,6 +124,10 @@ form button:hover {
     max-width: 500px;
     margin: auto;
 }
+#feed-view #tweets {
+    display: flex;
+    flex-direction: column-reverse;
+}
 #feed-view .tweet {
     border: 1px solid #bebebe;
     border-radius: 2px;
@@ -145,4 +151,17 @@ form button:hover {
 #feed-view .tweet .time-posted {
     font-size: 12px;
     color: gray;
+}
+#feed-view .tweet .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding-top: 10px;
+}
+#feed-view .tweet .button-container form {
+    border: none;
+    padding: 0;
+}
+#feed-view .tweet .button-container button#delete {
+    background-color: rgb(148, 62, 88);
 }

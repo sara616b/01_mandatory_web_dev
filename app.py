@@ -21,5 +21,8 @@ import logout_get
 import new_tweet_get
 import new_tweet_post
 import feed_get
+import delete_tweet_post
+import edit_tweet_get
+import edit_tweet_post
 
 run(host="127.0.0.1", port="4444", reloader=True, debug=True, server="paste")

@@ -18,7 +18,6 @@ def new_tweet_post():
         print("No title")
     else:
         form_inputs["title"] = new_tweet_title
-        
     
     new_tweet_description = request.forms.get("new_tweet_description")
     if not new_tweet_description:
@@ -44,6 +43,7 @@ def new_tweet_post():
         "title": new_tweet_title,
         "description": new_tweet_description,
         "time_posted": time.localtime(),
+        "time_edited": None,
     }
     TWEETS.append(new_tweet)
     print(new_tweet)

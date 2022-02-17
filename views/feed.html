@@ -14,11 +14,18 @@
                     <h2 class="title">{{ tweet["title"] }}</h2>
                     <p class="description">{{ tweet["description"] }}</p>
                     <p class="time-posted">{{ f'{tweet["time_posted"].tm_mon}/{tweet["time_posted"].tm_mday}/{tweet["time_posted"].tm_year}' }}</p>
-                    % if user_id == tweet["user_id"]:
-                        <button>EDIT</button>
+                    % if tweet["time_edited"]:
+                        <p class="time-edited">{{f'{tweet["time_edited"].tm_mon}/{tweet["time_edited"].tm_mday}/{tweet["time_edited"].tm_year}' }}</p>
                     % end
                     % if user_id == tweet["user_id"]:
-                        <button>DELETE</button>
+                        <div class="button-container">
+                            <form action='{{"/edit-tweet/" + tweet["id"]}}' method="get">
+                                <button id="edit">EDIT</button>
+                            </form>
+                            <form action='{{"/delete-tweet/" + tweet["id"]}}' method="post">
+                                <button id="delete">DELETE</button>
+                            </form>
+                        </div>
                     % end
                 </div>
             % end

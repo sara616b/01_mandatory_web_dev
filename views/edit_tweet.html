@@ -1,0 +1,18 @@
+% include('header', title='Edit Tweet', loggedIn=is_logged_in)
+    <main id="new-tweet-view">
+        <h1>
+            Edit Tweet
+        </h1>
+        <form action="{{'/edit-tweet/' + tweet['id']}}" method="post">
+            <label>
+                Title
+                <input name="new_tweet_title" type="text" placeholder="Title" value="{{tweet['title']}}"/>
+            </label>
+            <label>
+                Description
+                <textarea name="new_tweet_description" placeholder="Description">{{tweet['description']}}</textarea>
+            </label>
+            <button>SAVE EDITS!</button>
+        </form>
+    </main>
+% include('footer')
