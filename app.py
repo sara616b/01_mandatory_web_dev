@@ -1,6 +1,5 @@
-from bottle import get, post, run, static_file, view
+from bottle import get, run, static_file
 
-# GLOBAL VALUES #############################
 from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
 
 # STYLESHEET #############################
@@ -8,7 +7,7 @@ from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
 def style():
     return static_file("app.css", root=".")
 
-# GET VIEWS #############################
+##############################
 import index_get
 import home_get
 import users_get

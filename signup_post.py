@@ -2,10 +2,8 @@ from bottle import redirect, request, post
 import re
 import uuid
 
-# GLOBAL VALUES #############################
-from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
+from global_values import *
 
-##############################
 @post("/signup")
 def signup():
     # get the info from the form and validate the info

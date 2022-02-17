@@ -1,13 +1,10 @@
 from bottle import redirect, request, post
-import re
 import uuid
 import jwt
 import time
 
-# GLOBAL VALUES #############################
 from global_values import *
 
-##############################
 @post("/new-tweet")
 def new_tweet_post():
     
@@ -25,7 +22,6 @@ def new_tweet_post():
     else:
         form_inputs["description"] = new_tweet_description
     
-    # get user info
     user_session_jwt = request.get_cookie("jwt", secret="secret")
     if user_session_jwt not in SESSIONS:
         return redirect("/login")
@@ -34,7 +30,6 @@ def new_tweet_post():
     user_first_name = user_information["first_name"]
     user_id = user_information["id"]
     
-    # append user to USERS
     new_tweet = {
         "id": str(uuid.uuid4()),
         "user_id": user_id,

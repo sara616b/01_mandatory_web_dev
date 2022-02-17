@@ -101,6 +101,19 @@ form input, form textarea {
     font-size: 14px;
 }
 
+/* SIGN UP SUCCESS */
+#signup-success {
+    max-width: 500px;
+    margin: auto;
+}
+#signup-success a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+}
+
 /* USERS */
 #users-view {
     max-width: 500px;

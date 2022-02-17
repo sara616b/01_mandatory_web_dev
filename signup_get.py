@@ -1,10 +1,8 @@
 from bottle import get, request, view
 
-# GLOBAL VALUES #############################
-from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
+from global_values import *
 from check_if_logged_in import check_if_logged_in
 
-##############################
 @get("/signup")
 @view("signup.html")
 def signup_view():

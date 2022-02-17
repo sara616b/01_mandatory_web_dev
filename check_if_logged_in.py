@@ -2,16 +2,10 @@ from bottle import request
 import jwt
 from jwt.exceptions import InvalidSignatureError
 
-# GLOBAL VALUES #############################
 from global_values import *
 
 def check_if_logged_in():
     is_logged_in = False
-    
-    
-    # user_session_id = request.get_cookie("jwt", secret="secret")
-    # SESSIONS.remove(user_session_id)
-    
     
     if request.get_cookie("jwt", secret="secret") and request.get_cookie("jwt", secret="secret") in SESSIONS:
         try:

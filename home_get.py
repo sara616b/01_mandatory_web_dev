@@ -1,15 +1,12 @@
 from bottle import get, redirect, request, view
 import jwt
 
-# GLOBAL VALUES #############################
 from global_values import *
 from check_if_logged_in import check_if_logged_in
 
-##############################
 @get("/home")
 @view("home.html")
 def home_view():
-    #validate
     user_session_jwt = request.get_cookie("jwt", secret="secret")
     if user_session_jwt not in SESSIONS:
         return redirect("/login")

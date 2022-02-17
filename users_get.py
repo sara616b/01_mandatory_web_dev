@@ -1,9 +1,8 @@
-from bottle import get, view
+from bottle import get, redirect, view
 
-from global_values import USERS
+from global_values import *
 from check_if_logged_in import check_if_logged_in
 
-##############################
 @get("/users")
 @view("users.html")
 def users_view():
