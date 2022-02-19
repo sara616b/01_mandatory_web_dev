@@ -6,7 +6,7 @@ from global_values import *
 
 @post("/signup")
 def signup():
-    # get the info from the form and validate the info
+    # get the info from the form and validate
     errors = []
     form_inputs = {}
 
@@ -14,10 +14,10 @@ def signup():
     new_user_first_name = request.forms.get("new_user_first_name")
     if not new_user_first_name:
         errors.append("first-name-missing")
-    else:
-        form_inputs["first-name"] = new_user_first_name
-    if len(new_user_first_name) < 2 or len(new_user_first_name) > 50:
+    elif len(new_user_first_name) < 2 or len(new_user_first_name) > 50:
         errors.append("first-name-length")
+    if new_user_first_name:
+        form_inputs["first-name"] = new_user_first_name
 
     # last name
     new_user_last_name = request.forms.get("new_user_last_name")
@@ -42,10 +42,19 @@ def signup():
     else:
         form_inputs["username"] = new_user_username
 
+    # check if username or email is already in use
+    for index, user in enumerate(USERS):
+        if user["email"] == new_user_email:
+            errors.append("user-exists-email")
+        if user["username"] == new_user_username:
+            errors.append("user-exists-username")
+
     # password
     new_user_password = request.forms.get("new_user_password")
     if not new_user_password:
         errors.append("password-missing")
+    elif len(new_user_password) < 3:
+        errors.append("password-short")
 
     # potential error messages
     if not errors == []:

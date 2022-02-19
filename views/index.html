@@ -1,5 +1,18 @@
-% include('header', title='Welcome', loggedIn=is_logged_in)
-    <main>
-        Welcome
+% include('header', title='Welcome', loggedIn=is_logged_in, nav='welcome')
+    <main id="welcome">
+        <h1>Welcome!</h1>
+        <p>To this page for the first mandatory assignment in web development. Created in february 2022. I don't know what to write here, I just don't want to find some Lorem Ipsum text. Yay!</p>
+        <div>
+            <a href="/signup">
+                <button>   
+                    Sign Up Here!
+                </button>
+            </a>
+            <a href="/login">
+                <button>
+                    Log In Here!
+                </button>
+            </a>
+        </div>
     </main>
 % include('footer')

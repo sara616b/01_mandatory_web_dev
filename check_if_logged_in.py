@@ -15,4 +15,3 @@ def check_if_logged_in():
             print(f"Invalid signature error: {error}")
             
     return is_logged_in
-    

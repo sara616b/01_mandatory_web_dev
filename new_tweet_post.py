@@ -21,6 +21,10 @@ def new_tweet_post():
         print("No description")
     else:
         form_inputs["description"] = new_tweet_description
+        
+    if not new_tweet_title:
+        if not new_tweet_description:
+            return redirect("/new-tweet?error=empty" + "" if not new_tweet_description else f"description={new_tweet_description}" + "" if not new_tweet_title else f"description={new_tweet_title}")
     
     user_session_jwt = request.get_cookie("jwt", secret="secret")
     if user_session_jwt not in SESSIONS:

@@ -1,12 +1,12 @@
-% include('header', title='Signup Success', loggedIn=is_logged_in)
+% include('header', title='Signup Success', loggedIn=is_logged_in, nav='signup-success')
     <main id="signup-success">
         <h1>
             Congrats! You've successfully signed up.
         </h1>
-        <button>
-            <a href="/login">
+        <a href="/login">
+            <button>
                 Log In Here!
-            </a>
-        </button>
+            </button>
+        </a>
     </main>
 % include('footer')

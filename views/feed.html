@@ -1,4 +1,4 @@
-% include('header', title='Feed', loggedIn=is_logged_in)
+% include('header', title='Feed', loggedIn=is_logged_in, nav='feed')
     <main id="feed-view">
         % if tweets == []:
             <div>
@@ -11,11 +11,15 @@
                 <div class="tweet">
                     <input name="tweet_id" type="hidden" value='{{ tweet["id"] }}'>
                     <p class="name">{{tweet["first_name"]}} <span class="username">@{{tweet["username"]}}</span></p>
-                    <h2 class="title">{{ tweet["title"] }}</h2>
-                    <p class="description">{{ tweet["description"] }}</p>
+                    % if tweet["title"]:
+                        <h2 class="title">{{ tweet["title"] }}</h2>
+                    % end
+                    % if tweet["description"]:
+                        <p class="description">{{ tweet["description"] }}</p>
+                    % end
                     <p class="time-posted">{{ f'{tweet["time_posted"].tm_mon}/{tweet["time_posted"].tm_mday}/{tweet["time_posted"].tm_year}' }}</p>
                     % if tweet["time_edited"]:
-                        <p class="time-edited">{{f'{tweet["time_edited"].tm_mon}/{tweet["time_edited"].tm_mday}/{tweet["time_edited"].tm_year}' }}</p>
+                        <p class="time-edited">Last edited: {{f'{tweet["time_edited"].tm_mon}/{tweet["time_edited"].tm_mday}/{tweet["time_edited"].tm_year}' }}</p>
                     % end
                     % if user_id == tweet["user_id"]:
                         <div class="button-container">

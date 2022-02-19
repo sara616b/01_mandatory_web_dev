@@ -12,8 +12,11 @@ def signup_view():
     errors["last_name_missing"] = request.params.get("last-name-missing")
     errors["email_missing"] = request.params.get("email-missing")
     errors["email_invalid"] = request.params.get("email-invalid")
+    errors["user_exists_email"] = request.params.get("user-exists-email")
     errors["username_missing"] = request.params.get("username-missing")
     errors["password_missing"] = request.params.get("password-missing")
+    errors["password_short"] = request.params.get("password-short")
+    errors["user_exists_username"] = request.params.get("user-exists-username")
 
     form_values = {}
     form_values["user_first_name"] = request.params.get("first-name") 
@@ -22,5 +25,5 @@ def signup_view():
     form_values["user_username"] = request.params.get("username")
 
     values = form_values | errors | dict(is_logged_in=check_if_logged_in())
-    # TODO - validate email and password
+    
     return values

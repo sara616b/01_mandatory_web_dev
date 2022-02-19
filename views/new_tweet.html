@@ -1,16 +1,19 @@
-% include('header', title='New Tweet', loggedIn=is_logged_in)
+% include('header', title='New Tweet', loggedIn=is_logged_in, nav='new-tweet')
     <main id="new-tweet-view">
         <h1>
             Post a new tweet!
         </h1>
         <form action="/new-tweet" method="post">
+            % if error == "empty":
+                <span>A tweet must contain either a title, a description or both</span>
+            % end
             <label>
                 Title
-                <input name="new_tweet_title" type="text" placeholder="Title"/>
+                <input name="new_tweet_title" type="text" placeholder="Title" value="{{ title or '' }}"/>
             </label>
             <label>
                 Description
-                <textarea name="new_tweet_description" placeholder="Description"></textarea>
+                <textarea name="new_tweet_description" placeholder="Description">{{description or ''}}</textarea>
             </label>
             <button>POST!</button>
         </form>

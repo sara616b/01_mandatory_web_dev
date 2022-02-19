@@ -14,8 +14,6 @@ def login_post():
         return redirect("/login?error=user_email")
     if not request.forms.get("user_password"):
         return redirect(f"/login?error=user_password&user_email={user_email}")
-    # if len(request.forms.get("user_password")) < 6 or len(request.forms.get("user_password")) > 50:
-    #     return redirect(f"/login?error=user_password&user_email={user_email}")
     for user in USERS:
         if user["email"] == user_email and user["password"] == request.forms.get("user_password"):
             user["is_logged_in"] = True
