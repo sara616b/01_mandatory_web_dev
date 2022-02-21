@@ -1,10 +1,12 @@
-% include('header', title='Feed', loggedIn=is_logged_in, nav='feed')
-    <main id="feed-view">
+% include('header', title='Dashboard', loggedIn=is_logged_in, nav='dashboard')
+    <main id="dashboard-view">
         % if tweets == []:
             <div>
                 Sorry, no tweets to show yet!
             </div>
-            <a href="/new-tweet">Why not post a new one!</a>
+            <a href="/new-tweet">
+                Why not post a new one!
+            </a>
         % end
         <div id="tweets">
             % for tweet in tweets:
@@ -24,10 +26,10 @@
                     % if user_id == tweet["user_id"]:
                         <div class="button-container">
                             <form action='{{"/edit-tweet/" + tweet["id"]}}' method="get">
-                                <button id="edit">EDIT</button>
+                                <input type="submit" id="edit" value="EDIT">
                             </form>
                             <form action='{{"/delete-tweet/" + tweet["id"]}}' method="post">
-                                <button id="delete">DELETE</button>
+                                <input type="submit" id="delete" value="DELETE">
                             </form>
                         </div>
                     % end

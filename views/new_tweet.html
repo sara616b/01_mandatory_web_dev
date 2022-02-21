@@ -7,15 +7,15 @@
             % if error == "empty":
                 <span>A tweet must contain either a title, a description or both</span>
             % end
-            <label>
+            <label for="new_tweet_title">
                 Title
-                <input name="new_tweet_title" type="text" placeholder="Title" value="{{ title or '' }}"/>
+                <input name="new_tweet_title" id="new_tweet_title" type="text" placeholder="Title"/>
             </label>
-            <label>
+            <label for="new_tweet_description">
                 Description
-                <textarea name="new_tweet_description" placeholder="Description">{{description or ''}}</textarea>
+                <textarea name="new_tweet_description" id="new_tweet_description" placeholder="Description"></textarea>
             </label>
-            <button>POST!</button>
+            <input type="submit" value="POST!">
         </form>
     </main>
 % include('footer')

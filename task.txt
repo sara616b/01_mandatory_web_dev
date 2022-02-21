@@ -19,3 +19,4 @@ Use pyjwt to install and use JSON WEB TOKENS
 Use a JSON Web TOKEN (JWT) in the cookie
 
 TODO
+- styling?

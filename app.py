@@ -7,9 +7,8 @@ from global_values import REGEX_EMAIL, SESSIONS, USERS, TWEETS
 def style():
     return static_file("app.css", root=".")
 
-##############################
+# IMPORTING MODULES #############################
 import index_get
-import home_get
 import users_get
 import signup_get
 import signup_post
@@ -19,7 +18,7 @@ import login_post
 import logout_get
 import new_tweet_get
 import new_tweet_post
-import feed_get
+import dashboard_get
 import delete_tweet_post
 import edit_tweet_get
 import edit_tweet_post

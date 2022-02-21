@@ -9,8 +9,6 @@ def index_view():
     if not check_if_logged_in():
         return redirect("/login")
     
-    description = request.params.get("description")
-    title = request.params.get("title")
     error = request.params.get("error")
     
-    return dict(is_logged_in=check_if_logged_in(), description=description, title=title, error=error)
+    return dict(is_logged_in=check_if_logged_in(), error=error)

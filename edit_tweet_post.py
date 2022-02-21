@@ -6,18 +6,26 @@ from global_values import *
 @post("/edit-tweet/<id>")
 def edit_tweet_post(id):
     
-    tweet_title = request.forms.get("new_tweet_title")
+    # title
+    tweet_title = request.forms.get("edit_tweet_title")
     if not tweet_title:
         print("No title")
     
-    tweet_description = request.forms.get("new_tweet_description")
+    # description
+    tweet_description = request.forms.get("edit_tweet_description")
     if not tweet_description:
         print("No description")
-        
+    
+    # it's not possible to post a tweet without a title or description
+    if not tweet_title:
+        if not tweet_description:
+            return redirect(f"/edit-tweet/{id}?error=empty")
+    
+    # find tweet to update and update the relevant values
     for index, tweet in enumerate(TWEETS):
         if tweet["id"] == id:
             tweet["title"] = tweet_title
             tweet["description"] = tweet_description
             tweet["time_edited"] = time.localtime()
 
-    return redirect("/feed")
+    return redirect("/dashboard")

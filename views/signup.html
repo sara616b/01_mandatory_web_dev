@@ -4,7 +4,7 @@
         Create a new user here!
     </h1>
     <form action="/signup" method="post">
-        <label>
+        <label for="new_user_first_name">
             First Name
             % if first_name_missing == "error":
                 <span>Please, input your first name</span>
@@ -12,16 +12,16 @@
             % if first_name_length == "error":
                 <span>Your first name must be between 2 and 50 characters long</span>
             % end 
-            <input name="new_user_first_name" type="text" placeholder="First name" value="{{ user_first_name or '' }}"/>
+            <input name="new_user_first_name" id="new_user_first_name" type="text" placeholder="First name" value="{{ user_first_name or '' }}" tabindex="0"/>
         </label>
-        <label>
+        <label for="new_user_last_name">
             Last Name
             % if last_name_missing == "error":
                 <span>Please, input your last name</span>
             % end
-            <input name="new_user_last_name" type="text" placeholder="Last name" value="{{ user_last_name or '' }}">
+            <input name="new_user_last_name" id="new_user_last_name" type="text" placeholder="Last name" value="{{ user_last_name or '' }}" tabindex="0">
         </label>
-        <label>
+        <label for="new_user_email">
             Email
             % if email_missing == "error":
                 <span>Please, input an email</span>
@@ -32,9 +32,9 @@
             % if user_exists_email == "error":
                 <span>A user with this email already exists</span>
             % end
-            <input name="new_user_email" type="text" placeholder="Email" value="{{ user_email or '' }}">
+            <input name="new_user_email" id="new_user_email" type="text" placeholder="Email" value="{{ user_email or '' }}" tabindex="0">
         </label>
-        <label>
+        <label for="new_user_username">
             Username
             % if username_missing == "error":
                 <span>Please, input a username</span>
@@ -42,9 +42,9 @@
             % if user_exists_username == "error":
                 <span>A user with this username already exists</span>
             % end
-            <input name="new_user_username" type="text" placeholder="Username" value="{{ user_username or '' }}">
+            <input name="new_user_username" id="new_user_username" type="text" placeholder="Username" value="{{ user_username or '' }}" tabindex="0">
         </label>
-        <label>
+        <label for="new_user_password">
             Password
             % if password_short == "error":
                 <span>Passwords must be 3 or more characters long</span>
@@ -52,9 +52,9 @@
             % if password_missing == "error":
                 <span>Please, input a password</span>
             % end
-            <input name="new_user_password" type="password" placeholder="Password">
+            <input name="new_user_password" id="new_user_password" type="password" placeholder="Password" tabindex="0">
         </label>
-        <button>SIGN ME UP!</button>
+        <input type="submit" value="SIGN ME UP!">
     </form>
 </main>
 % include('footer')

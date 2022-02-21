@@ -1,18 +1,24 @@
 % include('header', title='Edit Tweet', loggedIn=is_logged_in, nav='edit-tweet')
-    <main id="new-tweet-view">
+    <main id="edit-tweet-view">
         <h1>
             Edit Tweet
         </h1>
         <form action="{{'/edit-tweet/' + tweet['id']}}" method="post">
-            <label>
+            % if error == "empty":
+                <span>
+                    A tweet must contain either a title, a description or both
+                </span>
+            % end
+            <label for="edit_tweet_title">
                 Title
-                <input name="new_tweet_title" type="text" placeholder="Title" value="{{tweet['title']}}"/>
+                <input name="edit_tweet_title" id="edit_tweet_title" type="text" placeholder="Title"
+                    value="{{tweet['title']}}" />
             </label>
-            <label>
+            <label for="edit_tweet_description">
                 Description
-                <textarea name="new_tweet_description" placeholder="Description">{{tweet['description']}}</textarea>
+                <textarea name="edit_tweet_description" id="edit_tweet_description" placeholder="Description">{{tweet['description']}}</textarea>
             </label>
-            <button>SAVE EDITS!</button>
+            <input type="submit" value="SAVE EDITS!">
         </form>
     </main>
 % include('footer')

@@ -3,37 +3,32 @@ import uuid
 import jwt
 import time
 
+from check_if_logged_in import check_if_logged_in
 from global_values import *
 
 @post("/new-tweet")
 def new_tweet_post():
+    if not check_if_logged_in():
+        return redirect("/login")
     
-    form_inputs = {}
-    
+    # title
     new_tweet_title = request.forms.get("new_tweet_title")
-    if not new_tweet_title:
-        print("No title")
-    else:
-        form_inputs["title"] = new_tweet_title
     
+    # description
     new_tweet_description = request.forms.get("new_tweet_description")
-    if not new_tweet_description:
-        print("No description")
-    else:
-        form_inputs["description"] = new_tweet_description
         
+    # can't post empty tweet without either title or description
     if not new_tweet_title:
         if not new_tweet_description:
-            return redirect("/new-tweet?error=empty" + "" if not new_tweet_description else f"description={new_tweet_description}" + "" if not new_tweet_title else f"description={new_tweet_title}")
+            return redirect("/new-tweet?error=empty")
     
-    user_session_jwt = request.get_cookie("jwt", secret="secret")
-    if user_session_jwt not in SESSIONS:
-        return redirect("/login")
-    user_information = jwt.decode(user_session_jwt, JWT_KEY, algorithms=["HS256"])
+    # decode jwt cookie to get user information for tweet
+    user_information = jwt.decode(request.get_cookie("jwt", secret="secret"), JWT_KEY, algorithms=["HS256"])
     user_username = user_information["username"]
     user_first_name = user_information["first_name"]
     user_id = user_information["id"]
     
+    # append new tweet with values
     new_tweet = {
         "id": str(uuid.uuid4()),
         "user_id": user_id,
@@ -45,6 +40,5 @@ def new_tweet_post():
         "time_edited": None,
     }
     TWEETS.append(new_tweet)
-    print(new_tweet)
 
-    return redirect("/feed")
+    return redirect("/dashboard")
